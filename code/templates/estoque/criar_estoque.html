@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block 'body' %}
+  <div class="container mt-4">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h2>Adicionar Item ao Estoque</h2>
+      </div>
+      <div class="col text-end">
+        <a href="{% url 'lista_estoque' %}" class="btn btn-primary">Voltar para Lista de Estoque</a>
+      </div>
+    </div>
+
+    <form method="post" action="{% url 'criar_estoque' %}">
+      {% csrf_token %}
+      {{ form|bootstrap }}
+      <button type="submit" class="btn btn-success mt-3">Adicionar Item de Estoque</button>
+    </form>
+  </div>
+{% endblock 'body' %}

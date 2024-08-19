@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+    <div class="container">
+      <h2>Lista de Categorias</h2>
+      <a href="{% url 'criar_categoria' %}" class="btn btn-success mt-3">Criar Nova Categoria</a>
+
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+            <tr>
+                <td>{{ categoria.nome }}</td>
+                <td>
+                    <a href="{% url 'detalhes_categoria' categoria.id %}" class="btn btn-primary">Detalhes</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock 'body' %}

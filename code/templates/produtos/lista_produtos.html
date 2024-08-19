@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+    <div class="container">
+        <h2>Lista de Produtos</h2>
+        <a href="{% url "criar_produto" %}" class="btn btn-success mt-3">Criar produto</a>
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Estoque</th>
+                <th scope="col">Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.categoria.nome }}</td>
+                <td>R$ {{ produto.preco }}</td>
+                <td>
+                    {% with estoque=produto.estoque_set.first %}
+                       {% if estoque %}
+                          {{ estoque.quantidade }}
+                       {% else %}
+                          N/A
+                       {% endif %}
+                    {% endwith %}
+                </td>                 
+                <td>
+                    <a href="{% url 'detalhes_produto' produto.id %}" class="btn btn-primary">Detalhes</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+{% endblock 'body' %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+  <div class="container mt-4">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h2>Detalhes da Categoria</h2>
+      </div>
+      <div class="col text-end">
+        <a href="{% url 'atualizar_categoria' categoria_id=categoria.id %}" class="btn btn-warning">Editar Categoria</a>
+        <a href="{% url 'excluir_categoria' categoria_id=categoria.id %}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">Excluir Categoria</a>
+        <a href="{% url 'lista_categorias' %}" class="btn btn-primary">Voltar para Lista de Categorias</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ categoria.nome }}</h3>
+        <p class="card-text">{{ categoria.descricao }}</p>
+      </div>
+    </div>
+  </div>
+{% endblock 'body' %}

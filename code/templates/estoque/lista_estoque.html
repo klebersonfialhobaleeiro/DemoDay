@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+    <div class="container">
+        <h2>Lista de Estoque</h2>
+        <a href="{% url "criar_estoque" %}" class="btn btn-success mt-3">Adicionar estoque</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for estoque_item in estoque_itens %}
+                <tr>
+                    <td>{{ estoque_item.produto.nome }}</td>
+                    <td>{{ estoque_item.quantidade }}</td>
+                    <td>
+                        <a href="{% url 'detalhe_estoque' estoque_item.id %}" class="btn btn-primary">Detalhes</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock 'body' %}

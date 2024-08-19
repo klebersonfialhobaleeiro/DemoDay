@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn demoday.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./code:/app
+      - static_volume:/app/static
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://demoday:demoday@db:5432/demoday
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    volumes:
+      - static_volume:/app/static
+    depends_on:
+      - web
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: demoday
+      POSTGRES_USER: demoday
+      POSTGRES_PASSWORD: demoday
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+
+volumes:
+  postgres_data:
+  static_volume:

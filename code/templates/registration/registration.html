@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block 'title' %}Login{% endblock %}
+
+{% block 'body' %}
+<section class="align-items-center">
+    <div style="max-width: 400px;" class="container py-5 h-100">
+      <div class="text-center">
+        <h1 style="font-size: 24px;">Cadastro</h1>
+      </div>
+
+      <div class="col align-self-center">
+        <form method="POST">
+          {% csrf_token %}
+          {% for field in form %}
+              <div class="mb-3">
+                  {{ field|bootstrap }}
+              </div>
+          {% endfor %}
+          <div class="mb-3">
+            <a href="{% url 'entrar' %}">Já tem conta? Aperte aqui</a>
+          </div>
+          <div class="col">
+              <button class="btn btn-success text-light" type="submit">
+                Criar conta
+              </button>
+          </div>
+        </form>
+      </div>
+  </section>
+{% endblock %}

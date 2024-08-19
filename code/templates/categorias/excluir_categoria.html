@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+  <div class="container mt-4">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h2>Excluir Categoria</h2>
+      </div>
+      <div class="col text-end">
+        <a href="{% url 'lista_categorias' %}" class="btn btn-primary">Voltar para Lista de Categorias</a>
+      </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert">
+      Tem certeza que deseja excluir a categoria "{{ categoria.nome }}"?
+    </div>
+
+    <form method="post" action="{% url 'excluir_categoria' categoria.id %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Sim, Excluir Categoria</button>
+      <a href="{% url 'lista_categorias' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+{% endblock 'body' %}

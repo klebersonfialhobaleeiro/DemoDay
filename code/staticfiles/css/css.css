@@ -1,0 +1,87 @@
+.home {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  background-image: url("https://cdn.prod.website-files.com/6110d70cec9e430e23bd23c9/6110d70cec9e43eac3bd258d_insight.jpg");
+}
+.espaco {
+  margin-top: 12rem;
+}
+.home-content {
+  text-align: center;
+  margin-bottom: auto;
+}
+.home h1 {
+  margin-bottom: 20px;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.social-icon {
+  font-size: 24px;
+  color: #333;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+.social-icon:hover {
+  color: #ff6600;
+}
+.final {
+  background-color: #333;
+}
+
+.contato {
+  background-color: rgba(1, 87, 86, 0.1);
+  scroll-snap-align: start;
+  padding: 50px 0;
+  display: flex;
+  align-items: center;
+}
+.mapa,
+.formulario {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+[data-bs-theme="dark"] .maps {
+  filter: grayscale(100%) invert(92%) contrast(83%);
+}
+.mapa {
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.formulario {
+  border-radius: 8px;
+}
+.formulario h2 {
+  margin-bottom: 20px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.btn-form {
+  background-color: #ff9800 !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+.btn-form-grenn {
+  background-color: #198754 !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}

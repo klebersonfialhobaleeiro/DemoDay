@@ -1,0 +1,25 @@
+<!-- produtos/estoque/templates/estoque/detalhe_estoque.html -->
+
+{% extends 'base.html' %}
+
+{% block 'body' %}
+  <div class="container mt-4">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h2>Detalhes do Item de Estoque</h2>
+      </div>
+      <div class="col text-end">
+        <a href="{% url 'lista_estoque' %}" class="btn btn-primary">Voltar para Lista de Estoque</a>
+        <a href="{% url 'atualizar_estoque' estoque_id=estoque_item.id %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'excluir_estoque' estoque_id=estoque_item.id %}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este item de estoque?')">Excluir</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ estoque_item.produto.nome }}</h5>
+        <p class="card-text">Quantidade em Estoque: {{ estoque_item.quantidade }}</p>
+      </div>
+    </div>
+  </div>
+{% endblock 'body' %}

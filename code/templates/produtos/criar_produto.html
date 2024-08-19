@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block 'body' %}
+  <div class="container">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h2>Criar Novo Produto</h2>
+      </div>
+      <div class="col text-end">
+        <a href="{% url 'lista_produtos' %}" class="btn btn-primary">Voltar para Lista de Produtos</a>
+      </div>
+    </div>
+
+    <form method="post" action="{% url 'criar_produto' %}">
+      {% csrf_token %}
+      {{ form|bootstrap }}
+      <button type="submit" class="mt-2 btn btn-success">Criar Produto</button>
+    </form>
+  </div>
+{% endblock 'body' %}

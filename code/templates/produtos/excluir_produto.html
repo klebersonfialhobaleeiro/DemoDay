@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+  <div class="container mt-4">
+    <div class="row align-items-center mb-3">
+      <div class="col">
+        <h2>Excluir Produto</h2>
+      </div>
+      <div class="col text-end">
+        <a href="{% url 'lista_produtos' %}" class="btn btn-primary">Voltar para Lista de Produtos</a>
+      </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert">
+      Tem certeza que deseja excluir o produto "{{ produto.nome }}"?
+    </div>
+
+    <form method="post" action="{% url 'excluir_produto' produto.id %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a href="{% url 'detalhes_produto' produto.id %}" class="btn btn-secondary">Cancelar</a>    
+    </form>
+  </div>
+{% endblock 'body' %}
